@@ -1,0 +1,6 @@
+{
+  "name": "BORAN TRENDS MEN'S WEAR",
+  "description": "Complete modern men's e-commerce fashion website with full-stack REST API backend, admin dashboard, product uploads, order management, and UPI payments.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
