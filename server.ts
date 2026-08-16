@@ -592,7 +592,7 @@ app.get('/api/health', async (req, res) => {
       cloudName: process.env.CLOUDINARY_CLOUD_NAME || null,
     },
     admin: {
-      username: ADMIN_USER,
+      username: ADMIN_USERNAME,
     },
   });
 });
@@ -616,20 +616,20 @@ app.post('/api/admin/login', (req, res) => {
     return res.status(400).json({ error: 'Please enter both username and password.' });
   }
 
-  const isUserValid = username === ADMIN_USER;
-  const isPassValid = password === ADMIN_PASS;
+  const isUserValid = username === ADMIN_USERNAME;
+  const isPassValid = password === ADMIN_PASSWORD;
 
   if (!isUserValid || !isPassValid) {
     return res.status(401).json({ error: 'Invalid username or password.' });
   }
 
-  const token = jwt.sign({ username: ADMIN_USER, role: 'admin' }, JWT_SECRET, { expiresIn: '12h' });
+  const token = jwt.sign({ username: ADMIN_USERNAME, role: 'admin' }, JWT_SECRET, { expiresIn: '12h' });
 
   return res.json({
     message: 'Admin authentication successful',
     token,
     admin: {
-      username: ADMIN_USER,
+      username: ADMIN_USERNAME,
       role: 'admin',
     },
   });
@@ -1166,7 +1166,7 @@ async function startServer() {
   app.listen(PORT, '0.0.0.0', () => {
     console.log(`====================================================`);
     console.log(` BORAN TRENDS MEN'S WEAR Server running on port ${PORT}`);
-    console.log(` Admin Username: ${ADMIN_USER}`);
+    console.log(` Admin Username: ${ADMIN_USERNAME}`);
     console.log(`====================================================`);
 
     // Non-blocking cloud database sync after server starts
