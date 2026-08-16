@@ -34,7 +34,7 @@ try {
 
 const app = express();
 const PORT = process.env.PORT ? parseInt(process.env.PORT, 10) : 3000;
-const JWT_SECRET = process.env.JWT_SECRET || 'boran_trends_jwt_secret_key_2026';
+const JWT_SECRET = process.env.JWT_SECRET || 'borantrendsformens';
 const ADMIN_USER = process.env.ADMIN_USERNAME || 'boran-trends';
 const ADMIN_PASS = process.env.ADMIN_PASSWORD || 'sanjay';
 
