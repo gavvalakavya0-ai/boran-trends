@@ -17,26 +17,13 @@ import { Product, Order, OrderStatus } from './src/types';
 // Load environment variables from .env
 dotenv.config();
 
-// If some environment variables are not in process.env or updated in .env.example, load them
-try {
-  const envExamplePath = path.join(process.cwd(), '.env.example');
-  if (fs.existsSync(envExamplePath)) {
-    const parsedEnv = dotenv.parse(fs.readFileSync(envExamplePath));
-    for (const [k, v] of Object.entries(parsedEnv)) {
-      if (v && !v.includes('username:password') && !v.startsWith('MY_')) {
-        process.env[k] = v;
-      }
-    }
-  }
-} catch (e) {
-  // ignore
-}
-
 const app = express();
-const PORT = process.env.PORT ? parseInt(process.env.PORT, 10) : 3000;
-const JWT_SECRET = process.env.JWT_SECRET || 'borantrendsformens';
-const ADMIN_USER = process.env.ADMIN_USERNAME || 'boran-trends';
-const ADMIN_PASS = process.env.ADMIN_PASSWORD || 'sanjay';
+
+const PORT = Number(process.env.PORT) || 3000;
+const JWT_SECRET = process.env.JWT_SECRET || "borantrendsformens";
+const ADMIN_USERNAME = process.env.ADMIN_USERNAME || "";
+const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD || "";
+const MONGODB_URI = process.env.MONGODB_URI || "";
 
 // Configure Cloudinary if credentials are provided in environment
 if (process.env.CLOUDINARY_CLOUD_NAME && process.env.CLOUDINARY_API_KEY && process.env.CLOUDINARY_API_SECRET) {
